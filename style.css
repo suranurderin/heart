@@ -1,0 +1,173 @@
+body {
+  margin: 0;
+  background-color: #000000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  overflow: hidden;
+}
+
+.heart {
+  position: relative;
+  width: 100px;
+  height: 100px;
+  background-color: #ff0000;
+  transform: rotate(-45deg);
+  filter: drop-shadow(0 0 10px rgba(255, 0, 0, 0.6));
+  cursor: pointer;
+  transition: filter 0.2s ease;
+}
+
+.heart::before,
+.heart::after {
+  content: "";
+  position: absolute;
+  width: 100px;
+  height: 100px;
+  background-color: #ff0000;
+  border-radius: 50%;
+}
+
+.heart::before {
+  top: -50px;
+  left: 0;
+}
+
+.heart::after {
+  left: 50px;
+  top: 0;
+}
+
+@keyframes glow {
+  0% {
+    filter: drop-shadow(0 0 10px rgba(255, 0, 0, 0.8)) drop-shadow(0 0 20px rgba(255, 0, 0, 0.6));
+  }
+  100% {
+    filter: drop-shadow(0 0 15px rgba(255, 0, 0, 1)) drop-shadow(0 0 30px rgba(255, 0, 0, 0.7));
+  }
+}
+
+/* Kalp atış animasyonları */
+@keyframes heartbeat-slow {
+  0%, 100% { transform: rotate(-45deg) scale(1); }
+  30% { transform: rotate(-45deg) scale(1.06); }
+  60% { transform: rotate(-45deg) scale(1); }
+}
+
+@keyframes heartbeat-medium {
+  0%, 100% { transform: rotate(-45deg) scale(1); }
+  25% { transform: rotate(-45deg) scale(1.12); }
+  50% { transform: rotate(-45deg) scale(1); }
+  75% { transform: rotate(-45deg) scale(1.08); }
+}
+
+@keyframes heartbeat-fast {
+  0%, 100% { transform: rotate(-45deg) scale(1); }
+  20% { transform: rotate(-45deg) scale(1.18); }
+  40% { transform: rotate(-45deg) scale(1); }
+  60% { transform: rotate(-45deg) scale(1.12); }
+}
+
+@keyframes heartbeat-very-fast {
+  0%, 100% { transform: rotate(-45deg) scale(1); }
+  15% { transform: rotate(-45deg) scale(1.25); }
+  30% { transform: rotate(-45deg) scale(1); }
+  45% { transform: rotate(-45deg) scale(1.15); }
+}
+
+.heart.beating-slow {
+  animation: glow 1.5s ease-in-out infinite alternate, heartbeat-slow 2s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+}
+
+.heart.beating-medium {
+  animation: glow 1.5s ease-in-out infinite alternate, heartbeat-medium 1.2s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+}
+
+.heart.beating-fast {
+  animation: glow 1.5s ease-in-out infinite alternate, heartbeat-fast 0.8s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+}
+
+.heart.beating-very-fast {
+  animation: glow 1.5s ease-in-out infinite alternate, heartbeat-very-fast 0.5s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+}
+
+.message-container {
+  position: absolute;
+  bottom: 100px;
+  text-align: center;
+}
+
+#showMessageBtn {
+  padding: 12px 24px;
+  font-size: 16px;
+  background-color: #ff0000;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  box-shadow: 0 0 10px rgba(255, 0, 0, 0.8);
+  max-width: 90%;
+  width: fit-content;
+  word-wrap: break-word;
+}
+
+/* Mobil için uyarlama */
+@media (max-width: 600px) {
+  #showMessageBtn {
+    font-size: 14px;
+    padding: 5px 10px;
+    max-width: 90%;
+    text-align: center;
+    line-height: 1.4;
+  }
+}
+
+#heartMessage {
+  color: white;
+  margin-top: 20px;
+  display: none;
+  font-size: 20px;
+  text-align: center;
+  padding: 0 20px;
+  line-height: 1.5;
+  max-width: 90%;
+  word-wrap: break-word;
+}
+
+/* Mobil için uyarlama */
+@media (max-width: 600px) {
+  #heartMessage {
+    font-size: 16px;
+    padding: 0 15px;
+    line-height: 1.4;
+  }
+}
+
+#approachText {
+  position: absolute;
+  top: 45%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+  font-size: 18px;
+  text-align: center;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+
+@keyframes pulseText {
+  0%, 100% { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+  50% { opacity: 0.7; transform: translate(-50%, -50%) scale(1.05); }
+}
+
+#touchArrow {
+  position: absolute;
+  font-size: 40px;
+  color: white;
+  display: none;
+  z-index: 10;
+  pointer-events: none;
+  transform: translate(-50%, -50%);
+}
+
