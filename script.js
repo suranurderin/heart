@@ -99,25 +99,32 @@ document.getElementById('showMessageBtn').addEventListener('click', () => {
 // Mobil uyarı göster
 function showTouchHint() {
   const hint = document.createElement('div');
-  hint.textContent = 'Ekrana dokun ve kalbe yaklaş';
-  hint.style.position = 'absolute';
-  hint.style.top = '60%';
-  hint.style.left = '50%';
-  hint.style.transform = 'translate(-50%, -50%)';
-  hint.style.color = 'white';
-  hint.style.backgroundColor = 'rgba(0,0,0,0.6)';
-  hint.style.padding = '10px 15px';
-  hint.style.borderRadius = '10px';
-  hint.style.zIndex = '20';
-  hint.style.opacity = '0';
-  hint.style.transition = 'opacity 0.5s ease';
+  hint.textContent = 'Kalbe yaklaşmak için ekrana dokunabilirsin';
+  Object.assign(hint.style, {
+    position: 'absolute',
+    top: '62%',
+    left: '50%',
+    transform: 'translate(-50%, -50%)',
+    color: 'white',
+    backgroundColor: 'rgba(0,0,0,0.7)',
+    padding: '8px 14px',
+    borderRadius: '8px',
+    fontSize: '14px',
+    zIndex: '20',
+    opacity: '0',
+    transition: 'opacity 0.5s ease',
+    boxShadow: '0 0 10px rgba(255,255,255,0.2)',
+    maxWidth: '90%',
+    textAlign: 'center'
+  });
+
   document.body.appendChild(hint);
 
   setTimeout(() => { hint.style.opacity = '1'; }, 100);
   setTimeout(() => {
     hint.style.opacity = '0';
     setTimeout(() => hint.remove(), 500);
-  }, 5000);
+  }, 3500);
 }
 
 if ('ontouchstart' in window || navigator.maxTouchPoints > 0) {
