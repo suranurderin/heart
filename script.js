@@ -29,13 +29,17 @@ function updateHeartbeat(distance) {
 
 // Yazı opaklığı güncelle
 function updateApproachTextOpacity(distance) {
-  const min = 80, max = 400;
-  if (distance <= min) {
-    approachText.style.opacity = 0;
-  } else if (distance >= max) {
-    approachText.style.opacity = 1;
+  const maxDistance = 400; // Tamamen görünür olma sınırı
+  const minDistance = 80;  // Tamamen kaybolma sınırı
+  const text = document.getElementById('approachText');
+
+  if (distance <= minDistance) {
+    text.style.opacity = 0;
+  } else if (distance >= maxDistance) {
+    text.style.opacity = 1;
   } else {
-    approachText.style.opacity = (distance - min) / (max - min);
+    const opacity = (distance - minDistance) / (maxDistance - minDistance);
+    text.style.opacity = opacity;
   }
 }
 
@@ -99,7 +103,7 @@ document.getElementById('showMessageBtn').addEventListener('click', () => {
 // Mobil uyarı göster
 function showTouchHint() {
   const hint = document.createElement('div');
-  hint.textContent = 'Kalbe yaklaşmak için ekrana dokunabilirsin';
+  hint.textContent = 'Kalbe yaklaşmak için 👆 emojisini kullanabilirsin';
   Object.assign(hint.style, {
     position: 'absolute',
     top: '62%',
