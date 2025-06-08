@@ -160,7 +160,7 @@ body {
 /* Mobil ekranlar için */
 @media (max-width: 768px) {
   #approachText {
-    top: 45%; /* Mobilde biraz daha aşağı alabilirsin */
+    top: 50%; /* Mobilde biraz daha aşağı alabilirsin */
     font-size: 16px; /* İsteğe bağlı: yazı boyutu da küçültülebilir */
   }
 }
