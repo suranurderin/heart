@@ -157,10 +157,6 @@ body {
   transition: opacity 0.5s ease;
 }
 
-#touchHintEmoji {
-  font-size: 2.5rem;
-}
-
 #touchHintText {
   background-color: rgba(0, 0, 0, 0.7);
   color: white;
