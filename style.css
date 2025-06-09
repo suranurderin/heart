@@ -1,6 +1,6 @@
 body {
   margin: 0;
-  background-color: #000000;
+  background-color: #000;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -12,7 +12,7 @@ body {
   position: relative;
   width: 100px;
   height: 100px;
-  background-color: #ff0000;
+  background-color: #f00;
   transform: rotate(-45deg);
   filter: drop-shadow(0 0 10px rgba(255, 0, 0, 0.6));
   cursor: pointer;
@@ -25,7 +25,7 @@ body {
   position: absolute;
   width: 100px;
   height: 100px;
-  background-color: #ff0000;
+  background-color: #f00;
   border-radius: 50%;
 }
 
@@ -35,8 +35,8 @@ body {
 }
 
 .heart::after {
-  left: 50px;
   top: 0;
+  left: 50px;
 }
 
 @keyframes glow {
@@ -48,7 +48,6 @@ body {
   }
 }
 
-/* Kalp atış animasyonları */
 @keyframes heartbeat-slow {
   0%, 100% { transform: rotate(-45deg) scale(1); }
   30% { transform: rotate(-45deg) scale(1.06); }
@@ -77,19 +76,19 @@ body {
 }
 
 .heart.beating-slow {
-  animation: glow 1.5s ease-in-out infinite alternate, heartbeat-slow 2s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+  animation: glow 1.5s ease-in-out infinite alternate, heartbeat-slow 2s ease-in-out infinite;
 }
 
 .heart.beating-medium {
-  animation: glow 1.5s ease-in-out infinite alternate, heartbeat-medium 1.2s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+  animation: glow 1.5s ease-in-out infinite alternate, heartbeat-medium 1.2s ease-in-out infinite;
 }
 
 .heart.beating-fast {
-  animation: glow 1.5s ease-in-out infinite alternate, heartbeat-fast 0.8s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+  animation: glow 1.5s ease-in-out infinite alternate, heartbeat-fast 0.8s ease-in-out infinite;
 }
 
 .heart.beating-very-fast {
-  animation: glow 1.5s ease-in-out infinite alternate, heartbeat-very-fast 0.5s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+  animation: glow 1.5s ease-in-out infinite alternate, heartbeat-very-fast 0.5s ease-in-out infinite;
 }
 
 .message-container {
@@ -101,25 +100,19 @@ body {
 #showMessageBtn {
   padding: 12px 24px;
   font-size: 16px;
-  background-color: #ff0000;
+  background-color: #f00;
   color: white;
   border: none;
   border-radius: 10px;
   cursor: pointer;
   box-shadow: 0 0 10px rgba(255, 0, 0, 0.8);
   max-width: 90%;
-  width: fit-content;
-  word-wrap: break-word;
 }
 
-/* Mobil için uyarlama */
 @media (max-width: 600px) {
   #showMessageBtn {
     font-size: 14px;
     padding: 5px 10px;
-    max-width: 90%;
-    text-align: center;
-    line-height: 1.4;
   }
 }
 
@@ -130,17 +123,13 @@ body {
   font-size: 20px;
   text-align: center;
   padding: 0 20px;
-  line-height: 1.5;
   max-width: 90%;
-  word-wrap: break-word;
 }
 
-/* Mobil için uyarlama */
 @media (max-width: 600px) {
   #heartMessage {
     font-size: 16px;
     padding: 0 15px;
-    line-height: 1.4;
   }
 }
 
@@ -157,31 +146,26 @@ body {
   transition: opacity 0.3s ease;
 }
 
-/* Mobil ekranlar için */
-@media (max-width: 768px) {
-  #approachText {
-    top: 50%; /* Mobilde biraz daha aşağı alabilirsin */
-    font-size: 16px; /* İsteğe bağlı: yazı boyutu da küçültülebilir */
-  }
+#touchHintContainer {
+  position: absolute;
+  top: 20%;
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: center;
+  z-index: 20;
+  opacity: 0;
+  transition: opacity 0.5s ease;
 }
 
-/* Önce her cihazda gizle */
-#touchArrow {
-  display: none;
+#touchHintEmoji {
+  font-size: 2.5rem;
 }
 
-/* Sadece mobil cihazlarda göster */
-@media (hover: none) and (pointer: coarse) {
-  #touchArrow {
-    display: block;
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    font-size: 30px;
-    color: white;
-    z-index: 10;
-    opacity: 0.6;
-    pointer-events: none;
-  }
+#touchHintText {
+  background-color: rgba(0, 0, 0, 0.7);
+  color: white;
+  padding: 4px 10px;
+  border-radius: 6px;
+  font-size: 14px;
+  margin-top: 6px;
 }
-
